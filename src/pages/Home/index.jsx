@@ -1,8 +1,19 @@
 import React from 'react'
+import HeroSection from './components/HeroSection'
+import ProductCategory from './components/ProductCategory'
+import ChooseUs from './components/ChooseUs'
+import Contact from './components/Contact'
+import AboutUs from './components/AboutUs'
 
 function Home() {
   return (
-    <div className='text-green-500'>Home</div>
+    <div>
+      <HeroSection/>
+      <AboutUs/>
+      <ProductCategory/>
+      <ChooseUs/>
+      <Contact/>
+    </div>
   )
 }
 
