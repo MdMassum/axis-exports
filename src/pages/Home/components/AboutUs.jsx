@@ -73,7 +73,7 @@ const AboutUs = () => {
                   className="md:h-96 rounded-full border-4 border-white object-contain"
                 />
               </div>
-              <div className='flex justify-center md:absolute md:bottom-10 md:right-0 mr-20'>
+              <div className='w-full md:w-48 flex justify-center md:absolute md:bottom-10 md:right-0 mr-20'>
                 <Button />
               </div>
             </div>

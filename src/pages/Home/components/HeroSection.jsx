@@ -35,7 +35,7 @@ const HeroSection = () => {
       </div>
 
       <div className="flex justify-between items-center gap-2 md:-mt-6 ">
-      <div className="flex flex-wrap bg-white text-black py-5 md:py-7 pl-4 md:pl-24 text-sm font-semibold rounded-r-4xl">
+      <div className="flex flex-wrap bg-white text-black py-5 md:py-7 pl-4 md:pl-24 text-sm font-semibold md:rounded-r-4xl">
             <div className="flex items-center space-x-2 min-w-32">
               <FaCheckCircle className="text-green-500" />
               <span>100% ORGANIC</span>
