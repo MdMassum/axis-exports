@@ -4,7 +4,7 @@ import leaves from "../../../assets/multipleLeaf.png";
 
 const Contact = () => {
   return (
-    <div className="w-full md:w-[85%] flex flex-col md:flex-row mx-auto p-5 md:p-0 items-center justify-between md:gap-32 gap-8 md:py-8 bg-white rounded-lg ">
+    <div id="contactUs" className="w-full md:w-[85%] flex flex-col md:flex-row mx-auto p-5 md:p-0 items-center justify-between md:gap-32 gap-8 md:py-8 bg-white rounded-lg ">
       {/* Logo Section */}
       <div className="border-2 border-blue-300 p-6 rounded-lg flex items-center justify-center md:w-1/2">
         <img src={logo} alt="Company Logo" className="w-80" />
@@ -30,7 +30,7 @@ const Contact = () => {
             <FaFacebookF className="text-blue-500 text-2xl" />
             <span className="font-bold text-lg">@RTYUIO</span>
           </div>
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-3 mb-6">
             <FaWhatsapp className="text-green-500 text-2xl" />
             <span className="font-bold text-lg">@RTYUIO</span>
           </div>

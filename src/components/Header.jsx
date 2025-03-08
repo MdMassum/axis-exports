@@ -4,9 +4,9 @@ import { FiMenu, FiX } from "react-icons/fi";
 import logo from "../assets/logo.jpg";
 
 export const navItems = [
-  { label: "HOME", href: "#" },
-  { label: "ABOUT US", href: "#" },
-  { label: "CONTACT US", href: "#" },
+  { label: "HOME", href: "#home" },
+  { label: "ABOUT US", href: "#aboutUs" },
+  { label: "CONTACT US", href: "#contactUs" },
   { label: "LOGIN", href: "#" },
   { label: "REGISTER", href: "#" },
 ];
@@ -24,13 +24,13 @@ const Header = () => {
         {/* Desktop Nav */}
         <nav className="hidden md:flex space-x-8">
           {navItems.map((navItem) => (
-            <NavLink
+            <a
               key={navItem.label}
-              to={navItem.href}
+              href={navItem.href}
               className="text-black uppercase tracking-wide hover:text-green-700 transition"
             >
               {navItem.label}
-            </NavLink>
+            </a>
           ))}
         </nav>
 
@@ -44,14 +44,14 @@ const Header = () => {
       {isOpen && (
         <nav className="md:hidden bg-white bg-opacity-50 p-4 flex flex-col items-center space-y-4 shadow-md">
           {navItems.map((navItem) => (
-            <NavLink
+            <a
               key={navItem.label}
-              to={navItem.href}
+              href={navItem.href}
               className="text-green-900 uppercase tracking-wide hover:text-green-700 transition"
               onClick={() => setIsOpen(false)}
             >
               {navItem.label}
-            </NavLink>
+            </a>
           ))}
         </nav>
       )}

@@ -26,9 +26,9 @@ const products = [
 
 const ProductCategory = () => {
   return (
-    <div className="flex flex-col items-center p-6">
+    <div id="category" className="flex flex-col items-center p-6">
       <div className="flex flex-col items-center">
-        <h2 className="text-green-700 text-6xl font-bold flex flex-col items-center">
+        <h2 className="text-green-700 text-6xl font-bold flex flex-col items-center text-center mt-10 -mb-6">
           Product Categories
           <img src={titleImg} alt="" className="w-96 -mt-24" />
         </h2>

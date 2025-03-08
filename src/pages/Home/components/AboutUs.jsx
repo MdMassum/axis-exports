@@ -8,7 +8,7 @@ import Button from '../../../components/Button';
 
 const AboutUs = () => {
   return (
-    <section className=" pt-14 px-4">
+    <section className=" pt-14 px-4" id='aboutUs'>
       <div className="md:w-[90%] mx-auto">
         
         {/* Title */}
@@ -58,7 +58,7 @@ const AboutUs = () => {
 
             {/* Explore Products Section */}
             <div className="relative rounded-md">
-              <h1 className="text-7xl font-bold text-center text-green-700">
+              <h1 className="text-6xl md:text-7xl font-bold text-center text-green-700">
                 Explore
               </h1>
               <h2 className="text-6xl font-bold text-center mb-4 text-green-700">Wide Range of Products</h2>
