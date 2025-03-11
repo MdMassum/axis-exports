@@ -4,6 +4,7 @@ export default function Footer() {
     { label: "HOME", href: "#home" },
     { label: "CATEGORY", href: "#category" },
     { label: "ABOUT US", href: "#aboutUs" },
+    { label: "ADMIN LOGIN", href: "/admin/login" },
     { label: "LOGIN", href: "#" },
     { label: "REGISTER", href: "#" },
   ];

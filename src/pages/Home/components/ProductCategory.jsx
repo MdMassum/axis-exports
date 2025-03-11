@@ -1,30 +1,31 @@
+import { useEffect, useState } from "react";
 import titleImg from "../../../assets/titlebg.png";
 import ProductCard from "../../../components/ProductCard";
-
-const products = [
-  {
-    name: "Product1",
-    price: 999,
-    description: "This is the dlfjl ldfj description1",
-  },
-  {
-    name: "Product2",
-    price: 899,
-    description: "This is the dfkjldf dfkljdf description2",
-  },
-  {
-    name: "Product3",
-    price: 1099,
-    description: "This is the fldflk dfl description3",
-  },
-  {
-    name: "Product4",
-    price: 999,
-    description: "This is the fjl fll fdjfl description4",
-  },
-];
+import axios from "axios";
 
 const ProductCategory = () => {
+
+  const [products, setProducts] = useState([]);
+
+  const fetchProduct = async() =>{
+
+    try {
+      const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/v1/products`,
+      { withCredentials: true })
+
+      console.log(response);
+      if(response?.data?.success === true){
+        setProducts(response.data.products)
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchProduct();
+  }, [products])
+
   return (
     <div id="category" className="flex flex-col items-center p-6">
       <div className="flex flex-col items-center">
