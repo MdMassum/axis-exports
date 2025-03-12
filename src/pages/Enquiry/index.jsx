@@ -1,149 +1,183 @@
-import React, { useState } from 'react';
-import imageOne from '../../assets/business-card-3847385_1280.jpg';
-
+import React, { useState } from "react";
+import axios from "axios";
+import imageOne from "../../assets/logo.jpg";
+import titleImg from "../../assets/titlebg.png";
 
 const CustEnquiry = () => {
   const [formValues, setFormValues] = useState({
-    name: '',
-    email: '',
-    phone:'',
-    country:'',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    country: "",
+    product: "",
+    message: "",
   });
 
-  const [errors, setErrors] = useState({
-    name: '',
-    email: '',
-    phone:'',
-    country:'',
-    message: ''
-  });
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormValues({
       ...formValues,
-      [name]: value
+      [name]: value,
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    let valid = true;
-    const newErrors = { name: '', email: '', message: '', phone: '', country: '' };
+    setLoading(true);
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/api/v1/contact/new`,
+        { name:formValues.name, email:formValues.email, phone:formValues.phone,
+        country:formValues.country, product:formValues.product, message:formValues.message },
+        { withCredentials: true });
 
-    if (!formValues.name) {
-      newErrors.name = 'Name is required';
-      valid = false;
-    }
-    if (!formValues.email || !/\S+@\S+\.\S+/.test(formValues.email)) {
-      newErrors.email = 'Valid email is required';
-      valid = false;
-    }
-    if (!formValues.message) {
-      newErrors.message = 'Message is required';
-      valid = false;
-    }
-    if (!formValues.phone) {
-      newErrors.phone = 'Phone is required';
-      valid = false;
-    }
-    if (!formValues.country) {
-      newErrors.country = 'Country is required';
-      valid = false;
-    }
-
-    setErrors(newErrors);
-
-    if (valid) {
-      console.log('Form submitted', formValues);
+      if(response.success === false){
+        console.error("Error submitting form:", error);
+      }
+      setFormSubmitted(true);
+      setFormValues({ name: "", email: "", phone: "", country: "", product: "", message: "",});
+      setTimeout(() => setFormSubmitted(false), 7000);
+      
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Failed to submit the form. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <>
-      <div className="flex items-center justify-center min-h-screen  md:mt-16 md:mb-20">
-        <div className="flex flex-1 flex-col md:flex-row w-full max-w-6xl h-[80vh] md:h-[70vh] bg-white rounded-lg">
-          {/* Left side with image */}
-          <div className="flex-1 hidden md:block">
-            <img
-              src={imageOne}
-              alt="Contact Us"
-              className="h-[440px] object-cover rounded-l-lg"
-            />
-          </div>
+      <div className="flex flex-col min-h-screen mt-28 mb-44 md:mb-28 gap-10">
+        <div className="flex flex-col items-center -mb-20 md:-mb-4">
+          <h2 className="text-green-700 text-5xl font-bold flex flex-col items-center text-center -mb-6">
+            Enquire Us
+            <img src={titleImg} alt="" className="w-96 -mt-24" />
+          </h2>
+        </div>
 
-          {/* Right side with form */}
-          <div className="flex-1 p-3 md:px-8 md:py-2 ">
-          <h2 className="text-3xl font-semibold mb-2 text-center text-[#62b179] -mt-6">Enquire Us</h2>
-            <form onSubmit={handleSubmit} className="space-y-2">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 -mt-4">Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formValues.name}
-                  onChange={handleChange}
-                  className="mt-1 block w-full border-gray-300 border-2 rounded-md shadow-sm focus:border-gray-400 focus:ring-gray-400 sm:text-sm p-3 transition-transform duration-300 transform "
-                />
-                {errors.name && <p className="text-red-600 text-sm mt-1">{errors.name}</p>}
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formValues.email}
-                  onChange={handleChange}
-                  className="mt-1 block w-full border-gray-300 border-2 rounded-md shadow-sm focus:border-gray-400 focus:ring-gray-400 sm:text-sm p-3 transition-transform duration-300 transform "
-                />
-                {errors.email && <p className="text-red-600 text-sm mt-1">{errors.email}</p>}
-              </div>
-              <div className='flex md:flex-row flex-col gap-2 w-full'>
-                <div className='w-full md:w-1/2'>
-                <label className="block text-sm font-medium text-gray-700">Phone</label>
-                <input
-                  name="phone"
-                  value={formValues.phone}
-                  onChange={handleChange}
-                  className="mt-1 block w-full  border-gray-300 border-2 rounded-md shadow-sm focus:border-gray-400 focus:ring-gray-400 sm:text-sm p-3 transition-transform duration-300 transform "
-                />
-                {errors.phone && <p className="text-red-600 text-sm mt-1">{errors.phone}</p>}
+        <div className="flex items-center justify-center mt-4">
+          <div className="flex flex-1 flex-col items-center md:flex-row w-full max-w-6xl h-[80vh] md:h-[70vh] bg-white rounded-lg">
+            <div className="flex-1 hidden md:block">
+              <img
+                src={imageOne}
+                alt="Contact Us"
+                className="h-[440px] object-cover rounded-l-lg"
+              />
+            </div>
+
+            <div className="flex-1 p-3 md:px-8 md:py-2 w-full px-5">
+              <form onSubmit={handleSubmit} className="space-y-3">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    value={formValues.name}
+                    onChange={handleChange}
+                    className="mt-1 block w-full border-gray-300 border-2 rounded-md shadow-sm focus:border-gray-400 focus:ring-gray-400 sm:text-sm p-3"
+                  />
                 </div>
-                <div className='w-full md:w-1/2'>
-                <label className="block text-sm font-medium text-gray-700">Country</label>
-                <input
-                  name="country"
-                  value={formValues.country}
-                  onChange={handleChange}
-                  className="mt-1 block w-full border-gray-300 border-2 rounded-md shadow-sm focus:border-gray-400 focus:ring-gray-400 sm:text-sm p-3 transition-transform duration-300 transform "
-                />
-                {errors.country && <p className="text-red-600 text-sm mt-1">{errors.country}</p>}
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    value={formValues.email}
+                    onChange={handleChange}
+                    className="mt-1 block w-full border-gray-300 border-2 rounded-md shadow-sm focus:border-gray-400 focus:ring-gray-400 sm:text-sm p-3"
+                  />
                 </div>
-                
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700">Message</label>
-                <textarea
-                  name="message"
-                  value={formValues.message}
-                  onChange={handleChange}
-                  rows={4}
-                  className="mt-1 block w-full border-gray-300 border-2 rounded-md shadow-sm focus:border-gray-400 focus:ring-gray-400 sm:text-sm p-3 transition-transform duration-300 transform  "
-                />
-                {errors.message && <p className="text-red-600 text-sm mt-1">{errors.message}</p>}
-              </div>
-              <div>
-                <button className="w-full cursor-pointer relative group overflow-hidden border-2 px-8 py-2 border-[#62b179]">
-                  <span className="font-bold text-white text-xl relative z-10 group-hover:text-[#62b179] duration-500">Contact Us</span>
-                  <span className="absolute top-0 left-0 w-full bg-[#62b179] duration-500 group-hover:-translate-x-full h-full"></span>
-                  <span className="absolute top-0 left-0 w-full bg-[#62b179] duration-500 group-hover:translate-x-full h-full"></span>
-                  <span className="absolute top-0 left-0 w-full bg-[#62b179] duration-500 delay-300 group-hover:-translate-y-full h-full"></span>
-                  <span className="absolute delay-300 top-0 left-0 w-full bg-[#62b179] duration-500 group-hover:translate-y-full h-full mb-8"></span>
+
+                <div className="flex md:flex-row flex-col gap-2 w-full">
+                  <div className="w-full md:w-1/2">
+                    <label className="block text-sm font-medium text-gray-700">
+                      Phone
+                    </label>
+                    <input
+                      type="text"
+                      name="phone"
+                      required
+                      value={formValues.phone}
+                      onChange={handleChange}
+                      className="mt-1 block w-full border-gray-300 border-2 rounded-md shadow-sm focus:border-gray-400 focus:ring-gray-400 sm:text-sm p-3"
+                    />
+                  </div>
+
+                  <div className="w-full md:w-1/2">
+                    <label className="block text-sm font-medium text-gray-700">
+                      Country
+                    </label>
+                    <input
+                      type="text"
+                      name="country"
+                      required
+                      value={formValues.country}
+                      onChange={handleChange}
+                      className="mt-1 block w-full border-gray-300 border-2 rounded-md shadow-sm focus:border-gray-400 focus:ring-gray-400 sm:text-sm p-3"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">
+                    Select Product
+                  </label>
+                  <select
+                    name="product"
+                    required
+                    value={formValues.product}
+                    onChange={handleChange}
+                    className="mt-1 block w-full border-gray-300 border-2 rounded-md shadow-sm focus:border-gray-400 focus:ring-gray-400 sm:text-sm p-3"
+                  >
+                    <option value="">Select a Product</option>
+                    <option value="coconut oil">Coconut Oil</option>
+                    <option value="black pepper">Black Pepper</option>
+                    <option value="wooden bottle">Wooden Bottle</option>
+                    <option value="ginger garlic powder">
+                      Ginger Garlic Powder
+                    </option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">
+                    Message
+                  </label>
+                  <textarea
+                    name="message"
+                    required
+                    value={formValues.message}
+                    onChange={handleChange}
+                    rows={4}
+                    className="mt-1 block w-full border-gray-300 border-2 rounded-md shadow-sm focus:border-gray-400 focus:ring-gray-400 sm:text-sm p-3"
+                  />
+                </div>
+
+                {formSubmitted && (
+                  <p className="text-green-600 text-left mb-4 font-semibold">
+                    Form submitted successfully!
+                  </p>
+                )}
+
+                <button
+                  type="submit"
+                  className="w-full cursor-pointer mt-2 relative group overflow-hidden border-2 px-8 py-2 border-[#62b179]"
+                >
+                  {loading ? "Submitting..." : "Send"}
                 </button>
-
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
       </div>

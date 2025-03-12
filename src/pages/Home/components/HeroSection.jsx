@@ -49,7 +49,7 @@ const HeroSection = () => {
               <span>FASTER DELIVERY</span>
             </div>
           </div>
-          <div className="hidden md:flex mr-36">
+          <div className="hidden md:flex mr-36 mb-6">
             {/* Enquire Button */}
           <Button/>
           </div>

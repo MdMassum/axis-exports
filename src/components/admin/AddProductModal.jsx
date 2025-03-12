@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { FiX, FiLoader } from "react-icons/fi"; // 🔹 Added FiLoader for better UX
+import { FiX, FiLoader } from "react-icons/fi";
 
 function AddProductModal({ setIsOpen, products, setProducts }) {
 
@@ -54,7 +54,7 @@ function AddProductModal({ setIsOpen, products, setProducts }) {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
+    <div className="fixed inset-0 flex items-center justify-center bg-black/60  bg-opacity-50 z-50">
       <div className="bg-white p-6 rounded-lg shadow-lg w-96">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-bold text-green-600">Add Product</h2>
