@@ -1,12 +1,12 @@
-export default function Footer() {
+import { HashLink } from "react-router-hash-link";
 
+export default function Footer() {
   const quickLinks = [
     { label: "HOME", href: "#home" },
     { label: "CATEGORY", href: "#category" },
     { label: "ABOUT US", href: "#aboutUs" },
+    { label: "ENQUIRY", href: "/enquiry" },
     { label: "ADMIN LOGIN", href: "/admin/login" },
-    { label: "LOGIN", href: "#" },
-    { label: "REGISTER", href: "#" },
   ];
 
   return (
@@ -26,14 +26,19 @@ export default function Footer() {
           <ul className="mt-2 ">
             {quickLinks.map((link, index) => (
               <li key={index}>
-                <a href={link.href} className="hover:underline">
-                  {link.label}
-                </a>
+                {link.href.startsWith("#") ? (
+                  <HashLink smooth to={`/${link.href}`} className="hover:underline">
+                    {link.label}
+                  </HashLink>
+                ) : (
+                  <a href={link.href} className="hover:underline">
+                    {link.label}
+                  </a>
+                )}
               </li>
             ))}
           </ul>
         </div>
-
       </div>
     </footer>
   );

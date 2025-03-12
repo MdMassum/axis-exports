@@ -15,7 +15,7 @@ function ProductCard({ product }) {
           {product?.description}
         </p>
         <button className="min-w-24 bg-green-800 text-white font-bold rounded-xl border-2 border-white hover:bg-white hover:text-black transition cursor-pointer">
-          Buy Now!
+          Enquire !
         </button>
       </div>
     </div>

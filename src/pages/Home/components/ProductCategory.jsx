@@ -27,14 +27,14 @@ const ProductCategory = () => {
   }, [products])
 
   return (
-    <div id="category" className="flex flex-col items-center p-6">
+    <div id="category" className="flex flex-col items-center p-6 md-pt-3 md:pb-10">
       <div className="flex flex-col items-center">
         <h2 className="text-green-700 text-6xl font-bold flex flex-col items-center text-center mt-10 -mb-6">
           Product Categories
           <img src={titleImg} alt="" className="w-96 -mt-24" />
         </h2>
       </div>
-      <div className="flex flex-wrap items-center justify-center gap-6">
+      <div className="flex flex-wrap items-center justify-center gap-5">
         {products.map((product, index) => (
           <ProductCard key={index} product={product} />
         ))}

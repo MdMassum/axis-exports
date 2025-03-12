@@ -8,12 +8,19 @@ import NotFound from "./pages/NotFound";
 import Enquiry from "./pages/admin/Enquiry/Enquiry";
 import AdminLogin from "./pages/admin/Login/AdminLogin";
 import PrivateRoute from "./components/admin/PrivateRoute";
+import CustEnquiry from "./pages/Enquiry";
+
+
+// coconut oil -> 100 organic oil
+// black pepper -> natural
+// copper bottle -> handmade
+// ginger garlic powder -> 100% preservative
 
 function Layout() {
   const location = useLocation();
 
-  const showFooter = ["/", "/about"];
-  const showHeader = ["/"];
+  const showFooter = ["/", "/enquiry"];
+  const showHeader = ["/", "/enquiry"];
   const ProductDetailPage = location.pathname.startsWith("/product/");
 
   const showAdminSidebar = ["/admin/product", "/admin/enquiries"];
@@ -26,6 +33,7 @@ function Layout() {
 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/enquiry" element={<CustEnquiry />} />
       </Routes>
 
       {showFooter.includes(location.pathname) && <Footer />}

@@ -8,13 +8,13 @@ import Button from '../../../components/Button';
 
 const AboutUs = () => {
   return (
-    <section className=" pt-14 px-4" id='aboutUs'>
+    <section className=" py-10 md:pt-24 px-4 -mb-10 " id='aboutUs'>
       <div className="md:w-[90%] mx-auto">
         
         {/* Title */}
         <div className="flex flex-col items-center">
           <div className='flex '>
-          <img src={leaf} alt="" className='hidden md:flex w-72 -ml-28' />
+          <img src={leaf} alt="" className='hidden md:flex w-72 -ml-72 mb-6' />
           <h2 className="text-green-700 text-6xl font-bold flex flex-col items-center">
             About Us
             <img src={titleImg} alt="" className="w-96 -mt-24" />
@@ -45,7 +45,7 @@ const AboutUs = () => {
           {/* <div className="relative z-10 flex flex-col items-center"> */}
             
             {/* Mission and Vision Cards */}
-            <div className="flex flex-col md:flex-row justify-center items-center md:gap-8 mb-10">
+            <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-8 mb-10">
               <InfoCard
                 title="Our Mission"
                 text="Deliver fresh, organic, and sustainably sourced products while supporting responsible farming."
@@ -57,8 +57,8 @@ const AboutUs = () => {
             </div>
 
             {/* Explore Products Section */}
-            <div className="relative rounded-md">
-              <h1 className="text-6xl md:text-7xl font-bold text-center text-green-700">
+            <div className="relative rounded-md py-2 md:pt-16">
+              <h1 className="text-6xl md:text-7xl font-bold text-center text-green-700 mb-1">
                 Explore
               </h1>
               <h2 className="text-6xl font-bold text-center mb-4 text-green-700">Wide Range of Products</h2>
@@ -70,10 +70,10 @@ const AboutUs = () => {
                 <img
                   src={exploreImg}
                   alt=""
-                  className="md:h-96 rounded-full border-4 border-white object-contain"
+                  className="md:h-[400px] rounded-full border-4 border-white object-contain"
                 />
               </div>
-              <div className='w-full md:w-48 flex justify-center md:absolute md:bottom-10 md:right-0 mr-20'>
+              <div className='w-full md:w-48 flex justify-center md:absolute md:bottom-10 md:right-0 mr-24'>
                 <Button />
               </div>
             </div>

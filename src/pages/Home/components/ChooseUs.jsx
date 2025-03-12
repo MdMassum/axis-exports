@@ -1,5 +1,5 @@
 import { FaCheckCircle } from "react-icons/fa";
-import chooseUsImg from "../../../assets/chooseUsImg.png";
+import chooseUsImg from "../../../assets/chooseUsImg1.png";
 import leaf from "../../../assets/leaf2.png"
 
 const ChooseUs = () => {
@@ -34,17 +34,17 @@ const ChooseUs = () => {
       </div>
 
       {/* Right Side - Text */}
-      <div className="w-full md:w-1/2">
-        <div className="w-full flex flex-col mb-10">
-          <div className="w-full flex items-center" >
-            <h2 className=" text-5xl  text-black">Why to</h2>
+      <div className="w-full md:w-1/2 pb-10">
+        <div className="w-full flex flex-col mb-10 md:mb-16">
+          <div className="w-full flex items-center mb-1" >
+            <h2 className=" text-5xl md:text-6xl  text-black">Why to</h2>
             <img src={leaf} alt="" className="w-20 -ml-2 mt-8" />
           </div>
 
-          <p className="text-green-700 text-6xl font-bold -mt-5">Choose Us?</p>
+          <p className="text-green-700 text-6xl md:text-7xl font-bold -mt-5">Choose Us?</p>
         </div>
 
-        <ul className="space-y-2">
+        <ul className="space-y-4">
           {features.map((feature, index) => (
             <li key={index} className="flex items-start gap-3">
               <FaCheckCircle className="text-green-600 text-xl mt-1" />
