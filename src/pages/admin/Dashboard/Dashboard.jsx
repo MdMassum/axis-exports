@@ -18,7 +18,6 @@ const Dashboard = () => {
         { withCredentials: true }
       );
 
-      console.log(response);
       if (response?.data?.success === true) {
         setProducts(response.data.products);
       }
@@ -34,12 +33,12 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div className="flex flex-col p-6 bg-gray-100 min-h-screen ml-44">
-      <div className="flex items-center justify-between mb-8 mt-2 pr-10">
-        <h1 className="text-3xl font-semibold text-green-700">All Products</h1>
+    <div className="flex-1 flex-col px-4  min-h-screen">
+      <div className="flex items-center gap-10 mb-8 mt-2 pr-10">
+        <h1 className="text-3xl font-semibold text-[#62b179]">All Products</h1>
 
         <button
-          className="bg-green-600 text-white px-3 py-2 rounded-lg hover:opacity-90 cursor-pointer"
+          className="bg-[#62b179] text-white px-3 py-2 rounded-lg hover:opacity-90 cursor-pointer"
           onClick={() => setIsOpen(!isOpen)}
         >
           Add Product

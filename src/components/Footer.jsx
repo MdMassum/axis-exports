@@ -10,7 +10,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-green-800 text-white py-6 px-5 md:px-24">
+    <footer className="bg-[#278800] text-white py-6 px-5 md:px-24">
       <div className="flex md:flex-row flex-col md:gap-16 gap-6">
         {/* First Column - Address */}
         <div className="flex flex-col">

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { FiX, FiLoader } from "react-icons/fi";
+import toast from "react-hot-toast";
 
 function AddProductModal({ setIsOpen, products, setProducts }) {
 
-  const [formData, setFormData] = useState({ name: "", description: "", price: 0 });
+  const [formData, setFormData] = useState({ name: "", description: "", price: 0, stock:0 });
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -26,6 +27,7 @@ function AddProductModal({ setIsOpen, products, setProducts }) {
     data.append("name", formData.name);
     data.append("description", formData.description);
     data.append("price", formData.price);
+    data.append("stock", formData.stock);
 
     for (let image of images) {
       data.append("images", image);
@@ -39,14 +41,16 @@ function AddProductModal({ setIsOpen, products, setProducts }) {
       );
 
       setProducts([response.data.post, ...products]);
+      toast.success("Product Added Successfully")
 
-      setFormData({ name: "", description: "", price: 0 });
+      setFormData({ name: "", description: "", price: 0, stock:0 });
       setImages([]);
       setIsOpen(false);
 
     } catch (error) {
       setError(error.response?.data?.message || "Failed to create product. Please try again.");
       console.error("Error creating product:", error);
+      toast.error("Error creating product:", error);
 
     } finally {
       setLoading(false);
@@ -55,19 +59,19 @@ function AddProductModal({ setIsOpen, products, setProducts }) {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black/60  bg-opacity-50 z-50">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-96">
+      <div className="bg-white p-6 rounded-lg shadow-lg w-96 md:w-[450px]">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-bold text-green-600">Add Product</h2>
           <button
             onClick={() => setIsOpen(false)}
-            className="text-gray-600 hover:text-black"
+            className="text-gray-600 hover:text-black cursor-pointer"
           >
             <FiX size={20} />
           </button>
         </div>
 
         {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
-
+        <label htmlFor="name">Product Name</label>
         <input
           type="text"
           name="name"
@@ -76,6 +80,7 @@ function AddProductModal({ setIsOpen, products, setProducts }) {
           value={formData.name}
           onChange={handleChange}
         />
+        <label htmlFor="description">Description</label>
         <textarea
           name="description"
           placeholder="Description"
@@ -83,14 +88,33 @@ function AddProductModal({ setIsOpen, products, setProducts }) {
           value={formData.description}
           onChange={handleChange}
         ></textarea>
-        <input
-          type="number"
-          name="price"
-          placeholder="Price"
-          className="w-full p-2 border rounded mb-3 bg-transparent text-gray-700"
-          value={formData.price}
-          onChange={handleChange}
-        />
+        <div className="flex flex-col md:flex-row justify-center md:gap-4">
+          <div className="flex flex-col">
+          <label htmlFor="price">Price</label>
+          <input
+            type="number"
+            name="price"
+            placeholder="Price"
+            className="w-full p-2 border rounded mb-3 bg-transparent text-gray-700"
+            value={formData.price}
+            onChange={handleChange}
+          />
+          </div>
+
+          <div className="flex flex-col">
+          <label htmlFor="stock">Stock</label>
+          <input
+            type="number"
+            name="stock"
+            placeholder="Stock"
+            className="w-full p-2 border rounded mb-3 bg-transparent text-gray-700"
+            value={formData.stock}
+            onChange={handleChange}
+          />
+          </div>
+        </div>
+        
+        <label >Select Images <span className="text-xs text-slate-950">( less than 5mb )</span></label>
         <input
           type="file"
           accept="image/*"

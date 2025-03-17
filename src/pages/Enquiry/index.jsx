@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import imageOne from "../../assets/logo.jpg";
 import titleImg from "../../assets/titlebg.png";
+import toast from "react-hot-toast";
 
 const CustEnquiry = () => {
   const [formValues, setFormValues] = useState({
@@ -13,7 +14,6 @@ const CustEnquiry = () => {
     message: "",
   });
 
-  const [formSubmitted, setFormSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
@@ -36,14 +36,16 @@ const CustEnquiry = () => {
 
       if(response.success === false){
         console.error("Error submitting form:", error);
+        toast.error("Error submitting form:", error)
       }
-      setFormSubmitted(true);
+
+      toast.success("Form Submitted Successfully")
       setFormValues({ name: "", email: "", phone: "", country: "", product: "", message: "",});
       setTimeout(() => setFormSubmitted(false), 7000);
       
     } catch (error) {
       console.error("Error submitting form:", error);
-      alert("Failed to submit the form. Please try again.");
+      toast.error("Error submitting form:", error)
     } finally {
       setLoading(false);
     }
@@ -51,7 +53,7 @@ const CustEnquiry = () => {
 
   return (
     <>
-      <div className="flex flex-col min-h-screen mt-28 mb-44 md:mb-28 gap-10">
+      <div className="flex flex-col min-h-screen mt-28 mb-32 md:mb-28 gap-10">
         <div className="flex flex-col items-center -mb-20 md:-mb-4">
           <h2 className="text-green-700 text-5xl font-bold flex flex-col items-center text-center -mb-6">
             Enquire Us
@@ -164,15 +166,9 @@ const CustEnquiry = () => {
                   />
                 </div>
 
-                {formSubmitted && (
-                  <p className="text-green-600 text-left mb-4 font-semibold">
-                    Form submitted successfully!
-                  </p>
-                )}
-
                 <button
                   type="submit"
-                  className="w-full cursor-pointer mt-2 relative group overflow-hidden border-2 px-8 py-2 border-[#62b179]"
+                  className="w-full cursor-pointer mt-2 relative group overflow-hidden border-2 px-8 py-2 border-gray-400 hover:bg-[#278800] hover:text-white"
                 >
                   {loading ? "Submitting..." : "Send"}
                 </button>

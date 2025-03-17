@@ -23,9 +23,9 @@ const ChooseUs = () => {
   ];
 
   return (
-    <div className="md:w-[90%] flex flex-col md:flex-row items-center justify-between mx-auto gap-28 p-6 md:py-10">
+    <div className="md:w-[90%] flex flex-col md:flex-row items-center justify-between mx-auto gap-28 md:gap-14 p-6 md:py-20">
       {/* Left Side - Images */}
-      <div className=" hidden md:flex w-1/2 relative rounded-lg overflow-hidden">
+      <div className=" hidden md:flex w-1/2 relative rounded-lg ">
         <img
           src={chooseUsImg}
           alt="Organic Products"
@@ -34,14 +34,14 @@ const ChooseUs = () => {
       </div>
 
       {/* Right Side - Text */}
-      <div className="w-full md:w-1/2 pb-10">
-        <div className="w-full flex flex-col mb-10 md:mb-16">
+      <div className="w-full md:w-1/2 pb-10 z-30">
+        <div className="w-full flex flex-col mb-10 md:mb-16 md:-mt-5">
           <div className="w-full flex items-center mb-1" >
-            <h2 className=" text-5xl md:text-6xl  text-black">Why to</h2>
+            <h2 className=" text-5xl md:text-7xl  text-black">Why to</h2>
             <img src={leaf} alt="" className="w-20 -ml-2 mt-8" />
           </div>
 
-          <p className="text-green-700 text-6xl md:text-7xl font-bold -mt-5">Choose Us?</p>
+          <p className="text-[#278800] text-6xl md:text-7xl font-bold -mt-4 ">Choose Us?</p>
         </div>
 
         <ul className="space-y-4">

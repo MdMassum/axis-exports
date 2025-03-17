@@ -4,6 +4,7 @@ import axios from "axios";
 import img from "../../../assets/loginImg.png";
 import { useDispatch } from 'react-redux';
 import { signInStart, signInSuccess, signInFailure } from '../../../redux/user/userSlice';
+import toast from "react-hot-toast";
 
 
 const AdminLogin = () => {
@@ -32,15 +33,18 @@ const AdminLogin = () => {
       },{withCredentials:true});
       if(response.data.success === false){
         dispatch(signInFailure(response.data.message))
+        toast.error(response.data.message)
         return;
       }
       dispatch(signInSuccess(response.data.user))
       console.log("Login Success:", response.data);
+      toast.success("Login Successfull")
       navigate('/admin/product')
 
     } catch (err) {
       console.error("Login Error:", err.response?.data || err.message);
       setError(err.response?.data?.message || "An error occurred");
+      toast.error(err.response?.data?.message || "An error occurred");
       dispatch(signInFailure(err.response?.data?.message))
     } finally {
       setLoading(false);

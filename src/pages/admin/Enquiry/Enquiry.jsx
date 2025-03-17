@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FiLoader, FiTrash2 } from 'react-icons/fi';
+import toast from "react-hot-toast";
 
 function Enquiry() {
   const [enquiries, setEnquiries] = useState([]);
@@ -28,9 +29,12 @@ function Enquiry() {
       const response = await axios.delete(`${import.meta.env.VITE_BASE_URL}/api/v1/contact/${id}`, { withCredentials: true });
       if (response?.data?.success) {
         setEnquiries((prevEnquiries) => prevEnquiries.filter((enquiry) => enquiry._id !== id));
+        toast.success("Enquiry Deleted Successfully")
+        
       }
     } catch (error) {
       console.error("Error deleting enquiry:", error);
+      toast.error("Error deleting enquiry:", error);
     } finally {
       setDeleting(null);
     }
@@ -41,7 +45,7 @@ function Enquiry() {
   }, []);
 
   return (
-    <div className="flex flex-col p-6 bg-gray-100 ml-44 min-h-screen">
+    <div className="flex-1 flex-col px-4 min-h-screen">
       <div className="flex items-center justify-between mb-8 mt-2 pr-10">
         <h1 className="text-3xl font-semibold text-green-700">All Enquiries</h1>
       </div>

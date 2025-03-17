@@ -1,6 +1,7 @@
 import React from "react";
 import defaultImg from '../../assets/products/product1.png'
 import axios from "axios";
+import toast from "react-hot-toast";
 
 function Card({product, setProducts}) {
 
@@ -13,11 +14,13 @@ function Card({product, setProducts}) {
 
         setProducts((prevProducts) =>
         prevProducts.filter((currProd) => currProd._id !== product._id));
+        toast.success("Product Deleted Successfully")
       }
       console.log(response);
 
     } catch (error) {
       console.log(error);
+      toast.error("Error Deleting Product :",error);
     }
   }
   return (

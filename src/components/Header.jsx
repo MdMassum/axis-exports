@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { HashLink } from "react-router-hash-link";
 import { FiMenu, FiX } from "react-icons/fi";
-import logo from "../assets/logo.jpg";
+import logo from "../assets/logo1.png";
 
 export const navItems = [
   { label: "HOME", href: "#home" },
@@ -14,14 +14,14 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="absolute top-0 left-0 w-full bg-white shadow-md z-50">
-      <div className="max-w-[80%] mx-auto flex items-center justify-between py-2">
+    <header className="absolute top-0 left-0 w-full bg-white/85 shadow-md z-50">
+      <div className="max-w-[84%] mx-auto flex items-center justify-between py-2">
         <div>
           <img src={logo} alt="Logo" className="h-16" />
         </div>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex space-x-8">
+        <nav className="hidden md:flex space-x-16">
           {navItems.map((navItem) =>
             navItem.href.startsWith("#") ? (
               <HashLink
