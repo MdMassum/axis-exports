@@ -53,7 +53,7 @@ const CustEnquiry = () => {
 
   return (
     <>
-      <div className="flex flex-col min-h-screen mt-28 mb-32 md:mb-28 gap-10">
+      <div className="flex flex-col min-h-screen mt-32 mb-10 md:mb-28 gap-10">
         <div className="flex flex-col items-center -mb-20 md:-mb-4">
           <h2 className="text-green-700 text-5xl font-bold flex flex-col items-center text-center -mb-6">
             Enquire Us

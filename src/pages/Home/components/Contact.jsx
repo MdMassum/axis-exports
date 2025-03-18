@@ -15,7 +15,7 @@ const Contact = () => {
       {/* Contact Section */}
       <div className="flex flex-col justify-between  w-full md:w-1/2 text-green-700 text-left">
         <div className="w-full flex items-center mb-7 md:mb-16">
-          <div className="flex flex-row md:flex-col items-center justify-center md:justify-start gap-2 md:gap-0 font-bold md:-ml-6 md:mt-2" style={{fontFamily:'Nunito', fontWeight: 999}}>
+          <div className="flex flex-row md:flex-col items-center justify-center md:justify-start gap-5 md:gap-0 font-bold md:-ml-6 md:mt-2" style={{fontFamily:'Nunito', fontWeight: 999}}>
             <h2 className="text-6xl md:text-8xl text-left min-w-56 md:-ml-9">Get in</h2>
             <h2 className="text-lime-500 text-6xl md:-mt-4 md:text-8xl -ml-14 md:-ml-1">touch!</h2>
           </div>
