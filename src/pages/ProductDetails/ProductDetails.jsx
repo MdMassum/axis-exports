@@ -47,36 +47,36 @@ function ProductDetails() {
     }, 2000);
   };
   return (
-    <main className="w-full mt-20 md:mt-24">
-      {loading && <p className="text-center my-7 text-2xl">Loading...</p>}
+    <main className="w-full mt-20 md:mt-24 min-h-96">
+      {loading && <p className="text-center mt-28 text-2xl">Loading...</p>}
       {error && (
-        <p className="text-center my-7 text-2xl">Something went wrong!</p>
+        <p className="text-center mt-28 text-2xl">Something went wrong!</p>
       )}
       {product && !loading && !error && (
         <div className="flex flex-col md:flex-row max-w-6xl mx-auto md:p-3 md:my-7 gap-8">
-          {/* Share Button */}
-          {/* <div
-            onClick={() => handleShare()}
-            className="fixed top-28 right-10 md:top-24 md:right-20 z-10 border rounded-full w-12 h-12 flex justify-center items-center bg-slate-100 cursor-pointer"
-          >
-            <FaShare className="text-slate-500" />
-          </div>
-          {copied && (
-            <p className="fixed top-[23%] right-[5%] z-10 rounded-md bg-slate-100 p-2">
-              Link copied!
-            </p>
-          )} */}
-
           {/* Image Gallery */}
-          <div className="hidden md:flex md:w-1/2 w-full flex-col gap-4">
-            {/* Large Image Display */}
-            <div
-              className="h-[400px] border rounded-md"
-              style={{
-                background: `url(${mainImage}) center no-repeat`,
-                backgroundSize: "cover",
-              }}
-            ></div>
+          <div className="hidden md:flex md:w-1/2 w-full flex-col gap-4 relative">
+            {/* Large Image Display with Share Button Overlay */}
+            <div className="h-[400px] border rounded-md relative">
+              <div
+                className="absolute top-4 right-4 z-10 border rounded-full w-12 h-12 flex justify-center items-center bg-slate-100 cursor-pointer"
+                onClick={handleShare}
+              >
+                <FaShare className="text-slate-500" />
+              </div>
+
+              {copied && (
+                <p className="absolute top-17 right-4 z-10 rounded-md bg-slate-100 p-2">
+                  Link copied!
+                </p>
+              )}
+
+              <img
+                src={mainImage}
+                alt="Main product"
+                className="h-full w-full object-cover rounded-md"
+              />
+            </div>
 
             {/* Thumbnails for Desktop */}
             <div className="flex gap-2">
@@ -96,40 +96,57 @@ function ProductDetails() {
             </div>
           </div>
 
-            {/* Swiper Slider for Mobile */}
-            <div className="flex md:hidden">
-              <Swiper
-                className="w-full"
-                slidesPerView={1} 
-                spaceBetween={10}
-                pagination={{ clickable: true }}
-              >
-                {product.images.map((url) => (
-                  <SwiperSlide key={url}>
+          {/* Swiper Slider for Mobile */}
+          <div className="flex md:hidden">
+            <Swiper
+              className="w-full"
+              slidesPerView={1}
+              spaceBetween={10}
+              pagination={{ clickable: true }}
+            >
+              {product.images.map((url) => (
+                <SwiperSlide key={url}>
+                  <div className="relative h-[380px] w-full border rounded-md">
+                    {/* Share Button for Mobile */}
                     <div
-                      className={`h-[380px] w-full border rounded-md`}
+                      className="absolute top-4 right-4 z-10 border rounded-full w-12 h-12 flex justify-center items-center bg-slate-100 cursor-pointer"
+                      onClick={handleShare}
+                    >
+                      <FaShare className="text-slate-500" />
+                    </div>
+
+                    {/* 'Link copied!' Message */}
+                    {copied && (
+                      <p className="absolute top-16 right-4 z-10 rounded-md bg-slate-100 p-2">
+                        Link copied!
+                      </p>
+                    )}
+
+                    <div
+                      className="h-full w-full"
                       style={{
                         background: `url(${url}) center no-repeat`,
                         backgroundSize: "cover",
                       }}
                     ></div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
 
           {/* Product Details */}
           <div className="md:w-1/2 w-full flex flex-col gap-6 md:gap-12 px-5 md:px-0">
             <div className="flex flex-col gap-4">
-            <p className="text-2xl font-semibold">{product?.name}</p>
-            <p className="text-gray-700">
-              <span className="font-semibold text-black">Description - </span>
-              {product?.description}
-            </p>
+              <p className="text-2xl font-semibold">{product?.name}</p>
+              <p className="text-gray-700">
+                <span className="font-semibold text-black">Description - </span>
+                {product?.description}
+              </p>
             </div>
-            
+
             <a href="/enquiry" className="w-44">
-              <Button/>
+              <Button />
             </a>
           </div>
         </div>

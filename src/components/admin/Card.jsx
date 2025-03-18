@@ -6,6 +6,9 @@ import toast from "react-hot-toast";
 function Card({product, setProducts}) {
 
   const handleDelete = async() =>{
+
+    if (!window.confirm('Are you sure you want to delete this Product?')) return;
+
     try {
       const response = await axios.delete(`${import.meta.env.VITE_BASE_URL}/api/v1/product/${product._id}`,
       { withCredentials: true })

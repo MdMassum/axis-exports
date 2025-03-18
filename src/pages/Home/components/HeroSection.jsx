@@ -9,8 +9,8 @@ const HeroSection = () => {
       <div className="w-full mx-auto flex md:items-center md:justify-end pl-2  md:mt-0 md:px-0">
         {/* Left Content */}
         <div className="w-full md:absolute md:left-0 md:max-w-[680px] mt-6 md:-mt-10 md:pl-24 z-20 text-center md:text-left">
-          <h1 className="text-6xl md:text-7xl font-semibold mb-1">Herbal &</h1>
-          <h1 className="text-5xl md:text-7xl font-semibold mb-1 min-w-56">
+          <h1 className="text-6xl md:text-7xl font-bold md:font-semibold mb-1">Herbal &</h1>
+          <h1 className="text-5xl md:text-7xl font-bold md:font-semibold mb-1 min-w-56">
             Organic Product
           </h1>
           <h1 className="text-6xl md:text-7xl font-semibold mb-8">Exporter</h1>

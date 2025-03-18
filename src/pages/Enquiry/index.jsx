@@ -145,7 +145,7 @@ const CustEnquiry = () => {
                     <option value="">Select a Product</option>
                     <option value="coconut oil">Coconut Oil</option>
                     <option value="black pepper">Black Pepper</option>
-                    <option value="wooden bottle">Wooden Bottle</option>
+                    <option value="wooden bottle">Copper Bottle</option>
                     <option value="ginger garlic powder">
                       Ginger Garlic Powder
                     </option>
