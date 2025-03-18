@@ -3,7 +3,7 @@ import axios from "axios";
 import { FiX, FiLoader } from "react-icons/fi";
 import toast from "react-hot-toast";
 
-function AddProductModal({ setIsOpen, products, setProducts }) {
+function AddProductModal({ setIsOpen, products, fetchProduct }) {
 
   const [formData, setFormData] = useState({ name: "", description: "", price: 0, stock:0 });
   const [images, setImages] = useState([]);
@@ -40,8 +40,9 @@ function AddProductModal({ setIsOpen, products, setProducts }) {
         { withCredentials: true, headers: { "Content-Type": "multipart/form-data" } }
       );
 
-      setProducts([response.data.post, ...products]);
       toast.success("Product Added Successfully")
+      fetchProduct();
+      setIsOpen(false);
 
       setFormData({ name: "", description: "", price: 0, stock:0 });
       setImages([]);
@@ -76,6 +77,7 @@ function AddProductModal({ setIsOpen, products, setProducts }) {
           type="text"
           name="name"
           placeholder="Name"
+          disabled={loading}
           className="w-full p-2 border rounded mb-3 bg-transparent text-gray-700"
           value={formData.name}
           onChange={handleChange}
@@ -84,6 +86,7 @@ function AddProductModal({ setIsOpen, products, setProducts }) {
         <textarea
           name="description"
           placeholder="Description"
+          disabled={loading}
           className="w-full p-2 border rounded mb-3 h-24 bg-transparent text-gray-700"
           value={formData.description}
           onChange={handleChange}
@@ -95,6 +98,7 @@ function AddProductModal({ setIsOpen, products, setProducts }) {
             type="number"
             name="price"
             placeholder="Price"
+            disabled={loading}
             className="w-full p-2 border rounded mb-3 bg-transparent text-gray-700"
             value={formData.price}
             onChange={handleChange}
@@ -107,6 +111,7 @@ function AddProductModal({ setIsOpen, products, setProducts }) {
             type="number"
             name="stock"
             placeholder="Stock"
+            disabled={loading}
             className="w-full p-2 border rounded mb-3 bg-transparent text-gray-700"
             value={formData.stock}
             onChange={handleChange}
@@ -118,6 +123,7 @@ function AddProductModal({ setIsOpen, products, setProducts }) {
         <input
           type="file"
           accept="image/*"
+          disabled={loading}
           multiple
           onChange={handleFileChange}
           className="w-full p-2 border rounded mb-3 bg-transparent text-gray-700 cursor-pointer"

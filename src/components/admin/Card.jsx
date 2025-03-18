@@ -27,11 +27,11 @@ function Card({product, setProducts}) {
     }
   }
   return (
-    <div className="bg-green-800 text-white rounded-xl p-3 pb-5 w-80 md:w-64 shadow-lg">
+    <div className="bg-green-800 text-white rounded-xl p-3 pb-5 w-80 md:w-72 shadow-lg">
       <div className="bg-gradient-to-b from-blue-200 to-green-200 h-56 rounded-lg mb-4">
         <img src={product?.images[0] || defaultImg} alt={product?.name} />
       </div>
-      <div className="flex justify-between font-bold text-lg">
+      <div className="flex justify-between font-bold text-lg mt-12">
         <span>{product?.name}</span>
         <span>${product?.price}</span>
       </div>
@@ -42,7 +42,7 @@ function Card({product, setProducts}) {
       </p>
       <button 
       onClick={handleDelete}
-      className="min-w-24 bg-white text-rose-700 font-bold rounded-xl border-2 border-white hover:bg-white hover:text-black transition cursor-pointer">
+      className="min-w-24 bg-white text-rose-700 font-bold rounded-xl border-2 border-white hover:bg-rose-700 hover:text-white transition cursor-pointer">
         Delete
       </button>
       </div>

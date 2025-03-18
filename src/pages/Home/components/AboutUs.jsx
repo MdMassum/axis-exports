@@ -4,7 +4,7 @@ import titleImg from "../../../assets/titlebg.png";
 import exploreImg from "../../../assets/exploreImg.png";
 import bgImage from "../../../assets/treebg.png";
 import leaf from "../../../assets/multipleLeaf.png";
-import twoleaf from "../../../assets/twoLeaf.png";
+import twoleaf from "../../../assets/twoLeaf1.png";
 import Button from "../../../components/Button";
 
 const AboutUs = () => {
@@ -66,15 +66,15 @@ const AboutUs = () => {
                 <img
                   src={twoleaf}
                   alt=""
-                  className="w-72 -top-20 absolute hidden lg:flex"
+                  className="w-72 -top-20 absolute hidden lg:flex z-10"
                 />
-                <h2 className="text-6xl font-bold text-center mb-4 text-green-700">
+                <h2 className="text-6xl font-bold text-center mb-4 text-green-700 z-30">
                   Wide Range of Products
                 </h2>
                 <img
                   src={twoleaf}
                   alt=""
-                  className="w-[600px] -right-72 -top-16 absolute hidden lg:flex"
+                  className="w-[600px] -right-44 top-10 absolute hidden lg:flex"
                 />
               </div>
               <p className="text-center">
@@ -82,11 +82,11 @@ const AboutUs = () => {
                 products
               </p>
 
-              <div className="flex justify-between items-center">
+              <div className="flex justify-between items-center ">
                 <img
                   src={exploreImg}
                   alt=""
-                  className="md:h-[400px] rounded-full object-contain"
+                  className="md:h-[400px] rounded-full object-contain z-30"
                 />
               </div>
               <a

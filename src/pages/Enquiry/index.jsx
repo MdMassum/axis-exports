@@ -53,7 +53,7 @@ const CustEnquiry = () => {
 
   return (
     <>
-      <div className="flex flex-col min-h-screen mt-32 mb-10 md:mb-28 gap-10">
+      <div className="flex flex-col min-h-screen mt-32 mb-4 md:mb-28 gap-10">
         <div className="flex flex-col items-center -mb-20 md:-mb-4">
           <h2 className="text-green-700 text-5xl font-bold flex flex-col items-center text-center -mb-6">
             Enquire Us
@@ -81,6 +81,7 @@ const CustEnquiry = () => {
                     type="text"
                     name="name"
                     required
+                    disabled={loading}
                     value={formValues.name}
                     onChange={handleChange}
                     className="mt-1 block w-full border-gray-300 border-2 rounded-md shadow-sm focus:border-gray-400 focus:ring-gray-400 sm:text-sm p-3"
@@ -95,6 +96,7 @@ const CustEnquiry = () => {
                     type="email"
                     name="email"
                     required
+                    disabled={loading}
                     value={formValues.email}
                     onChange={handleChange}
                     className="mt-1 block w-full border-gray-300 border-2 rounded-md shadow-sm focus:border-gray-400 focus:ring-gray-400 sm:text-sm p-3"
@@ -110,6 +112,7 @@ const CustEnquiry = () => {
                       type="text"
                       name="phone"
                       required
+                      disabled={loading}
                       value={formValues.phone}
                       onChange={handleChange}
                       className="mt-1 block w-full border-gray-300 border-2 rounded-md shadow-sm focus:border-gray-400 focus:ring-gray-400 sm:text-sm p-3"
@@ -124,6 +127,7 @@ const CustEnquiry = () => {
                       type="text"
                       name="country"
                       required
+                      disabled={loading}
                       value={formValues.country}
                       onChange={handleChange}
                       className="mt-1 block w-full border-gray-300 border-2 rounded-md shadow-sm focus:border-gray-400 focus:ring-gray-400 sm:text-sm p-3"
@@ -138,6 +142,7 @@ const CustEnquiry = () => {
                   <select
                     name="product"
                     required
+                    disabled={loading}
                     value={formValues.product}
                     onChange={handleChange}
                     className="mt-1 block w-full border-gray-300 border-2 rounded-md shadow-sm focus:border-gray-400 focus:ring-gray-400 sm:text-sm p-3"
@@ -159,6 +164,7 @@ const CustEnquiry = () => {
                   <textarea
                     name="message"
                     required
+                    disabled={loading}
                     value={formValues.message}
                     onChange={handleChange}
                     rows={4}
@@ -168,6 +174,7 @@ const CustEnquiry = () => {
 
                 <button
                   type="submit"
+                  disabled={loading}
                   className="w-full cursor-pointer mt-2 relative group overflow-hidden border-2 px-8 py-2 border-gray-400 hover:bg-[#278800] hover:text-white"
                 >
                   {loading ? "Submitting..." : "Send"}

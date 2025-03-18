@@ -34,7 +34,7 @@ const Dashboard = () => {
 
   return (
     <div className="flex-1 flex-col px-4  min-h-screen">
-      <div className="flex items-center gap-10 mb-8 mt-2 pr-10">
+      <div className="flex items-center gap-10 mb-8 pr-10">
         <h1 className="text-3xl font-semibold text-[#62b179]">All Products</h1>
 
         <button
@@ -43,7 +43,7 @@ const Dashboard = () => {
         >
           Add Product
         </button>
-        {isOpen && <AddProductModal setIsOpen={setIsOpen} products={products} setProducts={setProducts} />}
+        {isOpen && <AddProductModal setIsOpen={setIsOpen} products={products} setProducts={setProducts} fetchProduct={fetchProduct} />}
       </div>
 
       {loading ? (
@@ -53,7 +53,7 @@ const Dashboard = () => {
       ) : products.length === 0 ? (
         <div className="text-center w-full text-xl text-gray-500">No Products Found</div>
       ) : (
-        <div className="flex flex-wrap items-center gap-6">
+        <div className="flex flex-wrap items-center gap-8">
           {products.map((product, index) => (
             <Card key={index} product={product} setProducts={setProducts} setLoading={setLoading}/>
           ))}
