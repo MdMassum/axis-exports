@@ -66,7 +66,7 @@ function Enquiry() {
       <div className='flex justify-between'>
 
       <div className="flex items-center justify-between mb-4 mt-2 pr-10">
-        <h1 className="text-3xl font-bold text-green-700">All Enquiries</h1>
+        <h1 className="text-3xl font-bold text-green-600">All Enquiries</h1>
       </div>
 
       {/* Date Range Filter Section */}
@@ -94,14 +94,14 @@ function Enquiry() {
 
           <button
             onClick={fetchEnquiries}
-            className="bg-green-700 text-white px-4 py-1 rounded-lg hover:opacity-90"
+            className="bg-gradient-to-r from-green-600 to-green-700 text-white px-4 py-1 rounded-lg hover:opacity-90 cursor-pointer"
           >
             Apply
           </button>
 
           <button
             onClick={handleClearDates}
-            className="bg-gray-500 text-white px-4 py-1 rounded-lg hover:opacity-90"
+            className="bg-gray-500 text-white px-4 py-1 rounded-lg hover:opacity-90 cursor-pointer"
           >
             Clear
           </button>

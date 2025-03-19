@@ -48,7 +48,7 @@ const Sidebar = () => {
 
     <div className="h-32 flex justify-center items-center gap-2 ">
       <img src={logo} alt="" className='h-9 -ml-1'/>
-      <h1 className="text-green-600 text-2xl font-semibold mb-3">Axis Exports</h1>
+      <h1 className="text-green-700 text-2xl font-bold mb-3">Axis Exports</h1>
     </div>
 
       <div className="flex flex-col w-full h-full px-4 gap-5 text-center py-3 items-center ">

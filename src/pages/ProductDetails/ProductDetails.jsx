@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { FaShare } from "react-icons/fa";
-import Button from "../../components/Button";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import DataContent from "./DataContent";
 
 function ProductDetails() {
   const [product, setProduct] = useState(null);
@@ -136,18 +136,8 @@ function ProductDetails() {
           </div>
 
           {/* Product Details */}
-          <div className="md:w-1/2 w-full flex flex-col gap-6 md:gap-12 px-5 md:px-0">
-            <div className="flex flex-col gap-4">
-              <p className="text-2xl font-semibold">{product?.name}</p>
-              <p className="text-gray-700">
-                <span className="font-semibold text-black">Description - </span>
-                {product?.description}
-              </p>
-            </div>
-
-            <a href="/enquiry" className="w-44">
-              <Button />
-            </a>
+          <div className="md:w-1/2">
+            <DataContent product={product}/>
           </div>
         </div>
       )}

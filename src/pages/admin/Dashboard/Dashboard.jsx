@@ -35,10 +35,10 @@ const Dashboard = () => {
   return (
     <div className="flex-1 flex-col px-4  min-h-screen">
       <div className="flex items-center gap-10 mb-8 pr-10">
-        <h1 className="text-3xl font-semibold text-[#62b179]">All Products</h1>
+        <h1 className="text-3xl font-bold text-[#4a965f]">All Products</h1>
 
         <button
-          className="bg-[#62b179] text-white px-3 py-2 rounded-lg hover:opacity-90 cursor-pointer"
+          className="bg-gradient-to-r from-green-600 to-green-700 text-white px-3 py-2 rounded-lg hover:opacity-90 cursor-pointer"
           onClick={() => setIsOpen(!isOpen)}
         >
           Add Product

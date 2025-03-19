@@ -111,7 +111,7 @@ const AdminLogin = () => {
             </div>
             <button
               type="submit"
-              className="w-full bg-green-500 text-white py-2 px-4 rounded-lg cursor-pointer hover:bg-green-600 flex items-center justify-center"
+              className="w-full bg-gradient-to-r from-green-600 to-green-700 font-bold text-white py-2 px-4 rounded-lg cursor-pointer hover:bg-green-600 flex items-center justify-center"
               disabled={loading}
             >
               {loading ? "Logging in..." : "Login"}

@@ -36,7 +36,7 @@ const ProductCategory = () => {
       </div>
       <div className="flex flex-wrap items-center justify-center gap-5">
         {products.map((product, index) => (
-          <Link to={`/product/${product._id}`}>
+          <Link key={product._id} to={`/product/${product._id}`}>
             <ProductCard key={index} product={product} />
           </Link>
 
